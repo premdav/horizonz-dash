@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import styled, { css } from 'styled-components';
 import { AppProvider } from './AppProvider';
-import Welcome from './WelcomeMessage';
 import AppLayout from './AppLayout';
 import Navigation from './Navigation';
+import Settings from '../Settings/Settings';
 
 class App extends Component {
   render() {
@@ -12,7 +11,7 @@ class App extends Component {
       <AppLayout>
         <AppProvider>
           <Navigation />
-          <Welcome />
+          <Settings />
         </AppProvider>
       </AppLayout>
       
