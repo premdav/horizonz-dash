@@ -20,7 +20,8 @@ export class AppProvider extends React.Component {
             removeCoin: this.removeCoin,
             isInFavorites: this.isInFavorites,
             confirmFavorites: this.confirmFavorites,
-            setFilteredCoins: this.setFilteredCoins
+            setFilteredCoins: this.setFilteredCoins,
+            setCurrentFavorite: this.setCurrentFavorite
         } 
     }
 
@@ -69,14 +70,17 @@ export class AppProvider extends React.Component {
     }
 
     confirmFavorites = () => {
+        let currentFavorite = this.state.favorites[0];
         this.setState({
             firstVisit: false,
-            page: 'dashboard'
+            page: 'dashboard',
+            currentFavorite,
         }, () => {
             this.fetchPrices();
         });
         localStorage.setItem('horizonData', JSON.stringify({
-            favorites: this.state.favorites
+            favorites: this.state.favorites,
+            currentFavorite
         }));
     }
 
@@ -85,8 +89,18 @@ export class AppProvider extends React.Component {
         if(!horizonzData) {
             return {page: 'settings', firstVisit: true}
         }
-        let { favorites } = horizonzData;
-        return { favorites };
+        let { favorites, currentFavorite } = horizonzData;
+        return { favorites, currentFavorite };
+    }
+
+    setCurrentFavorite = (sym) => {
+        this.setState({
+            currentFavorite: sym
+        });
+        localStorage.setItem('horizonData', JSON.stringify({
+            ...JSON.parse(localStorage.getItem('horizonData')),
+            currentFavorite: sym
+        }));
     }
 
     setPage = (page) => this.setState({page})
