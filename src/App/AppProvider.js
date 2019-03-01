@@ -113,7 +113,7 @@ export class AppProvider extends React.Component {
             historical: null
         }, () => {
             this.fetchPrices();
-            this.fetchHistoricalI();
+            this.fetchHistorical();
         });
         localStorage.setItem('horizonData', JSON.stringify({
             favorites: this.state.favorites,
