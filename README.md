@@ -1,8 +1,12 @@
 ## Horizonz Cryptocurrency Dashboard
 This is a cryptocurrency dashboard built with React.js using React context as the state handler. 
 
-At first it will use local storage to store user settings and information.
-In the future, it will be updated to use a PostgreSQL database and be connected with a Node.js backend.
+Currently works by using local storage.
+
+## Future Updates
+- User sign in and register pages
+- Node.js backend
+- Replace local storage with Postgres Database
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
